@@ -107,7 +107,7 @@ label[for="new-task"] {
 }
 
 input#new-task {
-    width: 318px;
+    width: 83%;
 }
 
 /* Task list */
@@ -140,13 +140,13 @@ li>input[type="text"] {
     width: 226px
 }
 
-button.delete img {
+button.task-remover img {
     height: 2em;
     transform: rotateZ(45deg);
     transition: transform 200ms ease-in;
 }
 
-button.delete img:hover {
+button.task-remover img:hover {
     transform: rotateZ(0);
 }
 
