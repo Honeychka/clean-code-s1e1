@@ -1,33 +1,33 @@
-var taskInput=document.getElementById("new-task");
-var addButton=document.getElementsByTagName("button")[0];
-var incompleteTaskHolder=document.getElementById("to-do-tasks");
-var completedTasksHolder=document.getElementById("completed-tasks");
+var taskInput=document.getElementById('new-task');
+var addButton=document.getElementsByTagName('button')[0];
+var incompleteTaskHolder=document.getElementById('to-do-tasks');
+var completedTasksHolder=document.getElementById('completed-tasks');
 
 var createNewTaskElement=function(taskString){
-    var listItem=document.createElement("li");
-    var checkBox=document.createElement("input");
-    var label=document.createElement("label");
-    var editInput=document.createElement("input");
-    var editButton=document.createElement("button");
-    var deleteButton=document.createElement("button");
-    var deleteButtonImg=document.createElement("img");
+    var listItem=document.createElement('div');
+    var checkBox=document.createElement('input');
+    var label=document.createElement('label');
+    var editInput=document.createElement('input');
+    var editButton=document.createElement('button');
+    var deleteButton=document.createElement('button');
+    var deleteButtonImg=document.createElement('img');
 
     listItem.className='tasks__item';
 
     label.innerText=taskString;
     label.className='task_text task_text-label';
 
-    checkBox.type="checkbox";
+    checkBox.type='checkbox';
     checkBox.className='task__checkbox';
-    editInput.type="text";
-    editInput.className="task_text input-task_text";
+    editInput.type='text';
+    editInput.className='task_text input-task_text';
 
-    editButton.innerText="Edit"; 
-    editButton.className="task-behaviour button";
+    editButton.innerText='Edit'; 
+    editButton.className='task-behaviour button';
 
-    deleteButton.className="task-remover button";
+    deleteButton.className='task-remover button';
     deleteButtonImg.src='./remove.svg';
-    deleteButtonImg.className="remove__icon";
+    deleteButtonImg.className='remove__icon';
     deleteButton.appendChild(deleteButtonImg);
 
     listItem.appendChild(checkBox);
@@ -44,25 +44,25 @@ var addTask=function(){
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
 
-    taskInput.value="";
+    taskInput.value='';
 }
 
 var editTask=function(){
     var listItem=this.parentNode;
 
     var editInput=listItem.querySelector('input[type=text]');
-    var label=listItem.querySelector("label");
-    var editBtn=listItem.querySelector(".task-behaviour");
-    var containsClass=listItem.classList.contains("edit-tasks");
+    var label=listItem.querySelector('label');
+    var editBtn=listItem.querySelector('.task-behaviour');
+    var containsClass=listItem.classList.contains('edit-tasks');
     if(containsClass){
         label.innerText=editInput.value;
-        editBtn.innerText="Edit";
+        editBtn.innerText='Edit';
     }else{
         editInput.value=label.innerText;
-        editBtn.innerText="Save";
+        editBtn.innerText='Save';
     }
 
-    listItem.classList.toggle("edit-tasks");
+    listItem.classList.toggle('edit-tasks');
 };
 
 var deleteTask=function(){
@@ -84,12 +84,12 @@ var taskIncomplete=function(){
 }
 
 addButton.onclick=addTask;
-addButton.addEventListener("click",addTask);
+addButton.addEventListener('click',addTask);
 
 var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
-    var checkBox=taskListItem.querySelector("input[type=checkbox]");
-    var editButton=taskListItem.querySelector("button.task-behaviour");
-    var deleteButton=taskListItem.querySelector("button.task-remover");
+    var checkBox=taskListItem.querySelector('.task__checkbox');
+    var editButton=taskListItem.querySelector('.task-behaviour');
+    var deleteButton=taskListItem.querySelector('.task-remover');
 
     editButton.onclick=editTask;
     deleteButton.onclick=deleteTask;
